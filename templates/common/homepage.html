@@ -1,0 +1,61 @@
+{% extends 'common/base.html' %}
+{% block title %}Staff Portal - Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="row mb-5 text-center">
+    <div class="col-lg-8 mx-auto">
+        <h1 class="display-5 fw-bold mb-2">Internal Operations Hub</h1>
+        <p class="text-muted fs-6">
+            Centralized platform for managing company assets, staff records, departmental allocations, and active projects.
+        </p>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-3">
+        <div class="card border shadow-sm p-3 h-100">
+            <div class="d-flex align-items-center">
+                <div class="fs-1 text-primary me-3"><i class="bi bi-people-fill"></i></div>
+                <div>
+                    <h6 class="text-muted mb-1 small uppercase">Employees</h6>
+                    <h3 class="fw-bold mb-0">--</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border shadow-sm p-3 h-100">
+            <div class="d-flex align-items-center">
+                <div class="fs-1 text-success me-3"><i class="bi bi-kanban-fill"></i></div>
+                <div>
+                    <h6 class="text-muted mb-1 small uppercase">Projects</h6>
+                    <h3 class="fw-bold mb-0">--</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border shadow-sm p-3 h-100">
+            <div class="d-flex align-items-center">
+                <div class="fs-1 text-warning me-3"><i class="bi bi-building-fill"></i></div>
+                <div>
+                    <h6 class="text-muted mb-1 small uppercase">Departments</h6>
+                    <h3 class="fw-bold mb-0">--</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border shadow-sm p-3 h-100">
+            <div class="d-flex align-items-center">
+                <div class="fs-1 text-info me-3"><i class="bi bi-journal-text"></i></div>
+                <div>
+                    <h6 class="text-muted mb-1 small uppercase">Records</h6>
+                    <h3 class="fw-bold mb-0">--</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

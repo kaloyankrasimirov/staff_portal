@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg border-bottom px-4">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <!-- Left: Brand / Home with a fixed width -->
+        <div style="width: 220px;" class="d-flex align-items-center">
+            <a class="navbar-brand fw-semibold d-flex align-items-center gap-2" href="{% url 'common:home' %}">
+                <i class="bi bi-shield-lock-fill text-primary"></i>Home
+            </a>
+        </div>
+
+        <!-- Center: Navigation Links (True center because side widths match) -->
+        <div class="d-none d-lg-flex justify-content-center">
+            <ul class="navbar-nav gap-2 mb-0">
+                <li class="nav-item"><a class="nav-link" href="#">Departments</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Employees</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Records</a></li>
+            </ul>
+        </div>
+
+        <!-- Right: Theme Toggle matching the left width -->
+        <div style="width: 220px;" class="d-flex justify-content-end align-items-center">
+            <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-1 d-flex align-items-center gap-2" id="themeToggle" type="button">
+                <i class="bi bi-sun-fill" id="themeIcon"></i>
+                <span id="themeText" class="small">Light</span>
+            </button>
+        </div>
+    </div>
+</nav>
