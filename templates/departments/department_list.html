@@ -1,0 +1,28 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <h2 class="mb-4">Departments</h2>
+
+    <div class="list-group">
+        {% for department in department_list %}
+            <a href="{{ department.get_absolute_url }}" class="list-group-item list-group-item-action mb-2 shadow-sm">
+                <h5 class="mb-1">{{ department.name }}</h5>
+                <p class="mb-1 text-muted">Manager: {{ department.manager }} | Location: {{ department.location }} | Email address: {{ department.phone_number }}</p>
+            </a>
+        {% empty %}
+            <p class="text-muted">No departments found.</p>
+        {% endfor %}
+    </div>
+
+    {% include 'common/pagination.html' %}
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="{% url 'departments:create' %}" class="btn btn-primary">
+            <i class="bi bi-plus-lg me-1"></i> Add Department
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+

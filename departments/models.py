@@ -1,16 +1,11 @@
 from django.db import models
-
+from django.urls import reverse
 
 
 class Department(models.Model):
     name = models.CharField(
         max_length=50,
         unique=True,
-    )
-
-    internal_code = models.CharField(
-        max_length=10,
-        unique=True
     )
 
     location = models.CharField(
@@ -37,3 +32,6 @@ class Department(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('departments:department-detail', kwargs={'pk': self.pk})

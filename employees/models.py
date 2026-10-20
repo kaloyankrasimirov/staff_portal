@@ -1,6 +1,6 @@
 from django.db import models
-
-
+from django.utils.text import slugify
+from django.urls import reverse
 
 
 class Employee(models.Model):
@@ -46,6 +46,19 @@ class Employee(models.Model):
         related_name = 'employees'
     )
 
+    slug = models.CharField(
+        max_length=100,
+        blank=True,
+        editable=True
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f'{self.first_name}-{self.last_name}')
+        super().save(*args, **kwargs)
+
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
 
+    def get_absolute_url(self):
+        return reverse('employees:employee-detail', kwargs={'slug': self.slug, 'pk': self.pk})

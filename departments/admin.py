@@ -10,7 +10,6 @@ class DepartmentAdmin(ModelAdmin):
     list_display = [
         'id',
         'name',
-        'internal_code',
         'location',
         'manager',
         'email_address',

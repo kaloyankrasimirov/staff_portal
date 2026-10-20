@@ -1,18 +1,36 @@
-# from django.http import HttpRequest, HttpResponse
-# from django.shortcuts import render
-#
-# from departments.models import Department
-#
-#
-# # Create your views here.
-# def home_page(request: HttpRequest) -> HttpResponse:
-#     total_departments_count = Department.objects.count()
-#     latest_book = Book.objects.order_by('-publishing_date').first()
-#
-#     context = {
-#         'total_books_count': total_books_count,
-#         'latest_book': latest_book,
-#         'page_title': 'Home'
-#     }
-#
-#     return render(request, 'books/landing_page.html', context)
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
+
+from departments.forms import DepartmentForm
+from departments.models import Department
+
+
+class DepartmentListView(ListView):
+    model = Department
+    paginate_by = 5
+    ordering = ['-name']
+
+
+class DepartmentDetailView(DetailView):
+    model = Department
+
+
+class DepartmentCreateView(SuccessMessageMixin, CreateView):
+    model = Department
+    form_class = DepartmentForm
+    success_message = 'Department successfully created!'
+
+
+class DepartmentUpdateView(SuccessMessageMixin, UpdateView):
+    model = Department
+    form_class = DepartmentForm
+    success_message = 'Department successfully updated!'
+
+class DepartmentDeleteView(SuccessMessageMixin, DeleteView):
+    model = Department
+    template_name = 'common/confirm_delete.html'
+    success_url = reverse_lazy('departments:departments-list')
+    success_message = 'Department successfully deleted.'
