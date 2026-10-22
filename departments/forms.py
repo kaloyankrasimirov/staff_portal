@@ -40,3 +40,5 @@ class DepartmentForm(forms.ModelForm):
                 'unique': 'The email address already exists.'
             }
         }
+
+

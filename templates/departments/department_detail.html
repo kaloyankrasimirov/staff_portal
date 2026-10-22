@@ -10,7 +10,11 @@
         <p><strong>Email:</strong> {{ department.email_address }}</p>
         <p><strong>Phone Number:</strong> {{ department.phone_number|default:"N/A" }}</p>
         <p><strong>Manager:</strong> {{ department.manager|default:"No manager assigned" }}</p>
-        <p><strong>Employees:</strong> {{ department.employees.all }}</p>
+            {% if department.manager %}
+        <p><a href="{% url 'employees:employee-detail' department.manager.slug department.manager.pk %}" class="text-decoration-none mb-3">Manager details</a></p>
+            {% endif %}
+        <p><strong>Assigned Employees: </strong><a href="{% url 'departments:assigned-employees' object.pk %}" class=text-decoration-none>See list</a></p>
+
     </div>
     <div class="mt-4">
         <a href="{% url 'departments:department-update' object.pk %}" class="btn btn-warning me-2">Update</a>

@@ -4,15 +4,32 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 
+from common.forms import SearchForm
 from employees.forms import EmployeeForm
 from employees.models import Employee
 
 
 class EmployeeListView(ListView):
     model = Employee
-    paginate_by = 20
-    ordering = ['last_name', 'first_name']
+    paginate_by = 10
+    ordering = ['first_name', 'last_name']
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        self.search_form = SearchForm(self.request.GET or None)
+
+        if self.search_form.is_valid():
+            query = self.search_form.cleaned_data.get('query')
+            if query:
+                qs = (qs.filter(first_name__icontains=query) |
+                      qs.filter(last_name__icontains=query))
+
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = self.search_form
+        return context
 
 class EmployeeDetailView(DetailView):
     model = Employee

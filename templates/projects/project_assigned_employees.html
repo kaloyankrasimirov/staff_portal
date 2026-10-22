@@ -1,0 +1,25 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Employees in {{ project }}</h2>
+
+    <ul class="list-group">
+        {% for employee in object_list %}
+            <li class="list-group-item">{{ employee }}</li>
+        {% empty %}
+            <li class="list-group-item text-muted">No employees assigned to this project yet.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'projects:project-detail' project.pk %}" class="btn btn-primary mt-3">Back to Project Details</a>
+
+    {% if is_paginated %}
+        <div class="d-flex justify-content-center mt-3">
+
+        {% include 'common/pagination.html' %}
+
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

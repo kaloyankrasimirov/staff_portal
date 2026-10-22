@@ -1,0 +1,28 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+
+<div class="container my-4">
+    <h2>{{ object.name }}</h2>
+
+    <div class="card shadow-sm p-4 mt-3">
+        <p><strong>Description:</strong> {{ project.description }}</p>
+
+        <p><strong>Project Lead:</strong> {{ project.project_lead|default:"No Project Lead assigned yet" }}</p>
+            {% if project.project_lead %}
+        <p><a href="{% url 'employees:employee-detail' project.project_lead.slug project.project_lead.pk %}" class="text-decoration-none mb-3">Project Lead details</a></p>
+            {% endif %}
+        <p><strong>Assigned Employees: </strong><a href="{% url 'projects:assigned-employees' object.pk %}" class=text-decoration-none>See list</a></p>
+
+    </div>
+    <div class="mt-4">
+        <a href="{% url 'projects:project-update' object.pk %}" class="btn btn-warning me-2">Update</a>
+        <a href="{% url 'projects:project-delete' object.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'projects:projects-list' %}" class="btn btn-primary">Back to all projects</a>
+    </div>
+</div>
+
+{% endblock %}

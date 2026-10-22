@@ -1,0 +1,44 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <h2 class="mb-4">{% if object %}Update Project{% else %}Create Project{% endif %}</h2>
+    <div class="card shadow-sm p-4 mt-3">
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="mb-3">
+                    <label for="{{ field.id_for_label }}" class="form-label fw-bold">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="text-danger">*</span>{% endif %}
+                    </label>
+                    {% if field.errors %}
+                        <div class="text-danger small fw-semibold mb-1">
+                            {{ field.errors.0 }}
+                        </div>
+                    {% endif %}
+
+                {% if field.name == 'project_participants' %}
+                        <div class="border rounded p-3 bg-dark text-light" style="max-height: 160px; overflow-y: auto;">
+                            {{ field }}
+                        </div>
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary me-2">Submit</button>
+
+                {% if object %}
+                <a href="{{ object.get_absolute_url }}" class="btn btn-secondary">Cancel</a>
+                {% else %}
+                <a href="{% url 'projects:projects-list' %}" class="btn btn-secondary">Cancel</a>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -27,7 +27,7 @@
                 {% if object %}
                 <a href="{{ object.get_absolute_url }}" class="btn btn-secondary">Cancel</a>
                 {% else %}
-                <a href="{% url 'departments:departments-list' %}" class="btn btn-secondary">Cancel</a>
+                <a href="{% url 'employees:employees-list' %}" class="btn btn-secondary">Cancel</a>
                 {% endif %}
             </div>
         </form>
