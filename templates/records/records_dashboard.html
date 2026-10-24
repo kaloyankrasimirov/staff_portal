@@ -36,22 +36,30 @@
                         <th>Sick Leave Days</th>
                         <th>Bonus Eligible</th>
                         <th>Manager Review</th>
+                        <th class="text-end"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for rec in employee_records %}
                     <tr>
-                        <td>{{ rec.employee.first_name }} {{ rec.employee.last_name }}</td>
-                        <td>{{ rec.paid_leave_allowance }}</td>
-                        <td>{{ rec.sick_leave_days|default:"-" }}</td>
+
+                        <td><span style="font-size: 14px;">{{ rec.employee.first_name }} {{ rec.employee.last_name }}</span></td>
+                        <td><span style="font-size: 14px;">{{ rec.paid_leave_allowance }}</span></td>
+                        <td><span style="font-size: 14px;">{{ rec.sick_leave_days|default:"-" }}</span></td>
                         <td>
+
                             {% if rec.bonus_eligibility %}
-                                <span class="badge">Yes</span>
+                               <span style="font-size: 14px;">Yes</span>
                             {% else %}
-                                <span class="badge">No</span>
+                                <span style="font-size: 14px;">No</span>
                             {% endif %}
                         </td>
                         <td>{{ rec.manager_review|truncatechars:40 }}</td>
+                        <td class="text-end"><span style="font-size: 14px;">
+                            <a href="{% url 'records:employee-record-update' rec.pk %}" class=text-decoration-none>
+                                Edit
+                            </a>
+                        </span></td>
                     </tr>
                     {% empty %}
                     <tr><td colspan="5" class="text-center">No employee records found.</td></tr>
@@ -76,15 +84,21 @@
                         <th>Annual Budget</th>
                         <th>Headcount Target</th>
                         <th>Strategic Goals</th>
+                        <th class="text-end"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for rec in department_records %}
                     <tr>
-                        <td>{{ rec.department.name }}</td>
-                        <td>${{ rec.annual_budget }}</td>
-                        <td>{{ rec.headcount_target }}</td>
-                        <td>{{ rec.strategic_goals|truncatechars:50|default:"-" }}</td>
+                        <td><span style="font-size: 14px;">{{ rec.department.name }}</span></td>
+                        <td><span style="font-size: 14px;">€{{ rec.annual_budget }}</span></td>
+                        <td><span style="font-size: 14px;">{{ rec.headcount_target }}</span></td>
+                        <td><span style="font-size: 14px;">{{ rec.strategic_goals|truncatechars:50|default:"-" }}</span></td>
+                        <td class="text-end"><span style="font-size: 14px;">
+                            <a href="{% url 'records:department-record-update' rec.pk %}" class=text-decoration-none>
+                                Edit
+                            </a>
+                        </span></td>
                     </tr>
                     {% empty %}
                     <tr><td colspan="4" class="text-center">No department records found.</td></tr>
@@ -109,16 +123,22 @@
                         <th>Status</th>
                         <th>Completion</th>
                         <th>Targets</th>
+                        <th class="text-end"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for rec in project_records %}
                     <tr>
-                        <td>{{ rec.project.name }}</td>
-                        <td>${{ rec.allocated_budget }}</td>
-                        <td><span class="badge bg-info text-dark">{{ rec.status }}</span></td>
-                        <td>{{ rec.completion_percentage }}%</td>
-                        <td>{{ rec.targets|truncatechars:40 }}</td>
+                        <td><span style="font-size: 14px;">{{ rec.project.name }}</span></td>
+                        <td><span style="font-size: 14px;">€{{ rec.allocated_budget }}</span></td>
+                        <td><span style="font-size: 14px;">{{ rec.status }}</span></td>
+                        <td><span style="font-size: 14px;">{{ rec.completion_percentage }}%</span></td>
+                        <td><span style="font-size: 14px;">{{ rec.targets|truncatechars:40 }}</span></td>
+                        <td class="text-end"><span style="font-size: 14px;">
+                            <a href="{% url 'records:project-record-update' rec.pk %}" class=text-decoration-none>
+                                Edit
+                            </a>
+                        </span></td>
                     </tr>
                     {% empty %}
                     <tr><td colspan="5" class="text-center">No project records found.</td></tr>

@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
@@ -15,11 +16,21 @@ def home_page_view(request: HttpRequest) -> HttpResponse:
         DepartmentRecords.objects.count()
     )
 
+    total_budget = ProjectRecords.objects.aggregate(
+        Sum('allocated_budget')
+    )['allocated_budget__sum']
+
+
     context = {
         'employee_count': Employee.objects.count(),
         'projects_count': Project.objects.count(),
         'departments_count': Department.objects.count(),
-        'records_count': total_records
+        'records_count': total_records,
+        'active_projects_count': ProjectRecords.objects.filter(status='Ongoing').count(),
+        'bonus_eligibility_count': EmployeeRecords.objects.filter(bonus_eligibility=True).count(),
+        'total_budget': total_budget
+
+
     }
 
     return render(request, 'common/homepage.html', context)
