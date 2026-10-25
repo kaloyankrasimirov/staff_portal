@@ -19,10 +19,14 @@ class EmployeeRecordsForm(forms.ModelForm):
             'manager_review': forms.Textarea(attrs={
                 'class': 'form-control', 'rows': 3
             })
+
         }
 
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if 'employee' in self.fields:
+            self.fields['employee'].empty_label = 'Select Employee'
+        if self.instance and self.instance.pk:
             if 'employee' in self.fields:
                 self.fields['employee'].disabled = True
 
@@ -44,8 +48,11 @@ class DepartmentRecordsForm(forms.ModelForm):
             }),
         }
 
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if 'department' in self.fields:
+            self.fields['department'].empty_label = 'Select Department'
+        if self.instance and self.instance.pk:
             if 'department' in self.fields:
                 self.fields['department'].disabled = True
 
@@ -71,3 +78,11 @@ class ProjectRecordsForm(forms.ModelForm):
                 'class': 'form-control'
             }),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if 'project' in self.fields:
+            self.fields['project'].empty_label = 'Select Project'
+        if self.instance and self.instance.pk:
+            if 'project' in self.fields:
+                self.fields['project'].disabled = True

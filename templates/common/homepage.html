@@ -11,7 +11,6 @@
         </p>
     </div>
 </div>
-
 <div class="row g-4 mb-3">
     <div class="col-md-3">
         <div class="card border shadow-sm p-3 h-100">
@@ -49,7 +48,7 @@
     <div class="col-md-3">
         <div class="card border shadow-sm p-3 h-100">
             <div class="d-flex align-items-center">
-                <div class="fs-1 text-info me-3"><i class="bi bi-journal-text"></i></div>
+                <div class="fs-1 text-danger me-3"><i class="bi bi-journal-text"></i></div>
                 <div>
                     <h6 class="text-muted mb-1 small uppercase">Records</h6>
                     <h3 class="fw-bold mb-0">{{ records_count }}</h3>
@@ -59,6 +58,20 @@
     </div>
 </div>
 <div class="row g-4 mb-3">
+    <!-- 1. Blue -->
+    <div class="col-md-3">
+        <div class="card h-100 p-3">
+            <div class="d-flex align-items-center">
+                <div class="fs-1 me-3 text-primary">
+                    <i class="bi bi-wallet2"></i>
+                </div>
+                <div>
+                    <div class="text-secondary small fw-bold">Departments Total Budget</div>
+                    <div class="fs-4 fw-bold">€{{ departments_budget|default:"0" }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-md-3">
         <div class="card h-100 p-3">
             <div class="d-flex align-items-center">
@@ -66,22 +79,8 @@
                     <i class="bi bi-cash-stack"></i>
                 </div>
                 <div>
-                    <div class="text-secondary small fw-bold">Total Budget</div>
-                    <div class="fs-4 fw-bold">€{{ total_budget|default:"0" }}</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-3">
-        <div class="card h-100 p-3">
-            <div class="d-flex align-items-center">
-                <div class="fs-1 me-3 text-info">
-                    <i class="bi bi-person-check-fill"></i>
-                </div>
-                <div>
-                    <div class="text-secondary small fw-bold">Headcount Target</div>
-                    <div class="fs-4 fw-bold">{{ current_headcount|default:"0" }} / {{ target_headcount|default:"0" }}</div>
+                    <div class="text-secondary small fw-bold">Projects Total Budget</div>
+                    <div class="fs-4 fw-bold">€{{ projects_budget|default:"0" }}</div>
                 </div>
             </div>
         </div>
@@ -102,12 +101,12 @@
     <div class="col-md-3">
         <div class="card h-100 p-3">
             <div class="d-flex align-items-center">
-                <div class="fs-1 me-3 text-primary">
-                    <i class="bi bi-award-fill"></i>
+                <div class="fs-1 me-3 text-danger">
+                    <i class="bi bi-pie-chart"></i>
                 </div>
                 <div>
-                    <div class="text-secondary small fw-bold">Bonus Eligible Employees</div>
-                    <div class="fs-4 fw-bold">{{ bonus_eligibility_count|default:"0" }}</div>
+                    <div class="text-secondary small fw-bold">Average Project Completion</div>
+                    <div class="fs-4 fw-bold">{{ average_project_completion|default:"0" }}%</div>
                 </div>
             </div>
         </div>
@@ -117,12 +116,12 @@
     <div class="col-md-3">
         <div class="card h-100 p-3">
             <div class="d-flex align-items-center">
-                <div class="fs-1 me-3 text-success">
-                    <i class="bi bi-wallet2"></i>
+                <div class="fs-1 me-3 text-primary">
+                    <i class="bi bi-cash-coin"></i>
                 </div>
                 <div>
-                    <div class="text-secondary small fw-bold">Y</div>
-                    <div class="fs-4 fw-bold">€{{ avg_project_budget|default:"0" }}</div>
+                    <div class="text-secondary small fw-bold">Average Salary</div>
+                    <div class="fs-4 fw-bold">€{{ average_salary|default:"0" }}</div>
                 </div>
             </div>
         </div>
@@ -130,12 +129,12 @@
     <div class="col-md-3">
         <div class="card h-100 p-3">
             <div class="d-flex align-items-center">
-                <div class="fs-1 me-3 text-info">
-                    <i class="bi bi-person-check-fill"></i>
+                <div class="fs-1 me-3 text-success">
+                    <i class="bi bi-award-fill"></i>
                 </div>
                 <div>
-                    <div class="text-secondary small fw-bold">Z</div>
-                    <div class="fs-4 fw-bold">{{ current_headcount|default:"0" }} / {{ target_headcount|default:"0" }}</div>
+                    <div class="text-secondary small fw-bold">Bonus Eligible Employees</div>
+                    <div class="fs-4 fw-bold">{{ bonus_eligibility_count|default:"0" }}</div>
                 </div>
             </div>
         </div>
@@ -144,11 +143,11 @@
         <div class="card h-100 p-3">
             <div class="d-flex align-items-center">
                 <div class="fs-1 me-3 text-warning">
-                    <i class="bi bi-pie-chart"></i>
+                    <i class="bi bi-calendar-event"></i>
                 </div>
                 <div>
-                    <div class="text-secondary small fw-bold">X</div>
-                    <div class="fs-4 fw-bold">{{ avg_completion|default:"0" }}%</div>
+                    <div class="text-secondary small fw-bold">Average Paid Leave Taken</div>
+                    <div class="fs-4 fw-bold">{{ average_paid_leave|default:"0" }} days</div>
                 </div>
             </div>
         </div>
@@ -156,12 +155,12 @@
     <div class="col-md-3">
         <div class="card h-100 p-3">
             <div class="d-flex align-items-center">
-                <div class="fs-1 me-3 text-primary">
-                    <i class="bi bi-award-fill"></i>
+                <div class="fs-1 me-3 text-danger">
+                    <i class="bi bi-calendar-event"></i>
                 </div>
                 <div>
-                    <div class="text-secondary small fw-bold">Something else</div>
-                    <div class="fs-4 fw-bold">{{ bonus_eligible_count|default:"0" }}</div>
+                    <div class="text-secondary small fw-bold">Average Sick Leave Taken</div>
+                    <div class="fs-4 fw-bold">{{ avg_sick_leave|default:"0" }} days</div>
                 </div>
             </div>
         </div>

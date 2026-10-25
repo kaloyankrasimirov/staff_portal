@@ -8,6 +8,13 @@ An internal Human Resources Information System built with Django for managing co
 - **Projects:** Track company initiatives with cross-departmental collaboration (Many-to-Many).
 - **Records:** Manage employees, departments and projects records as budget, milestones, targets, paid leave tracking, etc.
 
+## Tech Stack
+- **Backend:** Python, Django 6.1
+- **Database:** PostgreSQL (`psycopg2`)
+- **Admin Theme:** Django Unfold
+- **Environment Management:** python-dotenv
+- **Frontend:** Bootstrap 5, HTML5, CSS3, JavaScript
+
 ## Setup Instructions
 1. Clone the repository
 2. Create and activate a virtual environment (`python -m venv venv`)

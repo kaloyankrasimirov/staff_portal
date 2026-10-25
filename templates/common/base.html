@@ -13,43 +13,78 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
     <style>
-        [data-bs-theme="dark"] .btn-warning {
-            background-color: transparent;
-            border-color: #ffc107;
-            color: #ffc107;
-        }
-        [data-bs-theme="dark"] .btn-warning:hover {
-            background-color: #ffc107;
-            color: #000;
-        }
-        [data-bs-theme="dark"] .btn-primary {
-            background-color: transparent;
-            border-color: #0d6efd;
-            color: #0d6efd;
-        }
-        [data-bs-theme="dark"] .btn-primary:hover {
-            background-color: #0d6efd;
-            color: #fff;
-        }
-        [data-bs-theme="dark"] .btn-danger {
-            background-color: transparent;
-            border-color: #dc3545;
-            color: #dc3545;
-        }
-        [data-bs-theme="dark"] .btn-danger:hover {
-            background-color: #dc3545;
-            color: #fff;
-        }
-        [data-bs-theme="dark"] .btn-secondary {
-            background-color: transparent;
-            border-color: #6c757d;
-            color: #6c757d;
-        }
-        [data-bs-theme="dark"] .btn-secondary:hover {
-            background-color: #6c757d;
-            color: #fff;
-        }
-    </style>
+    select, input, textarea, .form-control, .form-select {
+        border-radius: 0.5rem !important;
+        padding: 0.6rem 0.9rem !important;
+        background-color: #212529 !important;
+        border: 1px solid #495057 !important;
+        color: #f8f9fa !important;
+    }
+
+    select, .form-select {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23f8f9fa' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 0.75rem center !important;
+        background-size: 16px 12px !important;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+    }
+
+
+    select:focus, input:focus, textarea:focus, .form-control:focus, .form-select:focus {
+        background-color: #212529 !important;
+        color: #f8f9fa !important;
+        border-color: #0d6efd !important;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+    }
+
+    select:disabled, input:disabled, textarea:disabled, .form-control:disabled, .form-select:disabled {
+    background-color: #212529 !important;
+    border-color: #495057 !important;
+    color: #f8f9fa !important;
+    cursor: not-allowed !important;
+    background-image: none !important;
+    opacity: 0.75 !important;
+    }
+
+    [data-bs-theme="dark"] .btn-warning {
+        background-color: transparent;
+        border-color: #ffc107;
+        color: #ffc107;
+    }
+    [data-bs-theme="dark"] .btn-warning:hover {
+        background-color: #ffc107;
+        color: #000;
+    }
+    [data-bs-theme="dark"] .btn-primary {
+        background-color: transparent;
+        border-color: #0d6efd;
+        color: #0d6efd;
+    }
+    [data-bs-theme="dark"] .btn-primary:hover {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+    [data-bs-theme="dark"] .btn-danger {
+        background-color: transparent;
+        border-color: #dc3545;
+        color: #dc3545;
+    }
+    [data-bs-theme="dark"] .btn-danger:hover {
+        background-color: #dc3545;
+        color: #fff;
+    }
+    [data-bs-theme="dark"] .btn-secondary {
+        background-color: transparent;
+        border-color: #6c757d;
+        color: #6c757d;
+    }
+    [data-bs-theme="dark"] .btn-secondary:hover {
+        background-color: #6c757d;
+        color: #fff;
+    }
+</style>
 </head>
 <body class="min-vh-100 d-flex flex-column bg-body">
     {% include 'common/nav.html' %}

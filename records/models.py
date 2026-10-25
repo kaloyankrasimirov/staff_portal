@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.db.models.fields import PositiveIntegerField
 
 from common.models import BaseModel
 
@@ -13,6 +14,11 @@ class EmployeeRecords(BaseModel):
         on_delete=models.CASCADE,
         related_name='record'
     )
+
+    salary = PositiveIntegerField(
+        default=0
+    )
+
     paid_leave_allowance = models.PositiveIntegerField(
         default=20
     )
@@ -25,7 +31,9 @@ class EmployeeRecords(BaseModel):
         default=False
     )
 
-    manager_review = models.TextField()
+    manager_review = models.TextField(
+        blank=True
+    )
 
     def __str__(self) -> str:
         return f"{self.employee.first_name} {self.employee.last_name}'s archive"
