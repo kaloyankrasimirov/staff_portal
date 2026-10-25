@@ -22,3 +22,6 @@ An internal Human Resources Information System built with Django for managing co
 4. Configure your `.env` file based on `.env.example`
 5. Run migrations (`python manage.py migrate`)
 6. Start the server (`python manage.py runserver`)
+
+
+
