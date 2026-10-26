@@ -27,17 +27,19 @@ def home_page_view(request: HttpRequest) -> HttpResponse:
     active_projects_count = ProjectRecords.objects.filter(status='Ongoing').count()
 
     avg_project_completion = round(
-        ProjectRecords.objects.aggregate(Avg('completion_percentage'))['completion_percentage__avg'])
+        ProjectRecords.objects.aggregate(Avg('completion_percentage'))['completion_percentage__avg'] or 0
+    )
 
     avg_salary = round(
-        EmployeeRecords.objects.aggregate(Avg('salary'))['salary__avg'])
+        EmployeeRecords.objects.aggregate(Avg('salary'))['salary__avg'] or 0
+    )
 
     avg_sick_leave = round(
-        EmployeeRecords.objects.aggregate(Avg('sick_leave_days'))['sick_leave_days__avg']
+        EmployeeRecords.objects.aggregate(Avg('sick_leave_days'))['sick_leave_days__avg'] or 0
     )
 
     avg_paid_leave = round(
-        EmployeeRecords.objects.aggregate(Avg('paid_leave_allowance'))['paid_leave_allowance__avg']
+        EmployeeRecords.objects.aggregate(Avg('paid_leave_allowance'))['paid_leave_allowance__avg'] or 0
     )
 
 
